@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Studying | History Curriculum</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #fdfdfd; --text: #34495e; }
+        body { font-family: 'Times New Roman', serif; background: var(--bg); margin: 0; color: var(--text); line-height: 1.8; }
+        
+        /* Educational Header */
+        header { background: white; border-bottom: 2px solid #eee; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; color: var(--primary); font-weight: bold; letter-spacing: -1px; }
+        .nav-links { font-size: 14px; color: #7f8c8d; }
+
+        .container { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+        
+        /* Essay Styling */
+        article { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+        h1 { font-size: 36px; color: var(--primary); text-align: center; margin-bottom: 50px; }
+        h2 { font-size: 24px; color: #1a1a1a; margin-top: 30px; }
+        p { text-align: justify; margin-bottom: 20px; text-indent: 40px; }
+
+        /* Login Button & Modal */
+        .btn-portal { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; }
+        .modal-box { background: white; padding: 40px; border-radius: 2px; width: 320px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .modal-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; box-sizing: border-box; }
+        .login-submit { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; cursor: pointer; font-weight: bold; }
+
+        #boot-layer { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: #000; z-index: 1000; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Gemini Studying <span style="font-weight: normal; color: #bdc3c7;">| Resource Hub</span></div>
+    <div class="nav-links">Curriculum > World History > Unit 4</div>
+    <button class="btn-portal" onclick="showLogin()">District Login</button>
+</header>
+
+<div class="container">
+    <h1>The Industrial Revolution: A Comprehensive Study</h1>
+
+    <article>
+        <h2>I. The Socio-Economic Genesis in Great Britain</h2>
+        <p>The Industrial Revolution was not a singular event but a convergence of geographic, political, and economic factors. Great Britain, in the mid-18th century, possessed the unique "ingredients" required for this transition. The presence of navigable waterways allowed for the efficient transport of raw materials, while the Enclosure Acts forced a surplus of rural laborers into burgeoning urban centers, creating a ready workforce. Furthermore, the British banking system provided the necessary capital for entrepreneurs to take significant risks on unproven mechanical technologies.</p>
+    </article>
+
+    <article>
+        <h2>II. The Mechanical Revolution: Textiles and Steam</h2>
+        <p>The textile industry served as the vanguard of industrialization. Inventions such as the Spinning Jenny and the Power Loom replaced the domestic "putting-out" system with the factory system. However, the true catalyst was James Watt’s refinement of the steam engine. By creating a rotary motion engine that was significantly more efficient than Newcomen’s atmospheric design, Watt enabled factories to decouple from water sources. This led to the centralization of industry in coal-rich regions like Lancashire and the West Midlands.</p>
+    </article>
+
+    <article>
+        <h2>III. The Iron Horse and the Transport Network</h2>
+        <p>As production increased, the need for rapid distribution became paramount. The "Iron Horse," or the steam locomotive, revolutionized the movement of goods and people. The inauguration of the Liverpool and Manchester Railway in 1830 marked the beginning of a network that would eventually lace across the globe. This transport revolution lowered the cost of goods and facilitated a truly national market, allowing seasonal produce and industrial components to reach consumers with unprecedented speed.</p>
+    </article>
+
+    <article>
+        <h2>IV. Urbanization and the Human Condition</h2>
+        <p>The shift from fields to factories led to the rapid, unplanned growth of cities like Manchester and Birmingham. This urbanization brought about profound social challenges. Families were often crammed into substandard housing known as tenements, where sanitation was non-existent. The lack of clean water led to frequent outbreaks of cholera and typhoid. However, these conditions also sparked the birth of the labor movement, as workers began to organize into trade unions to demand fair wages and safer working environments.</p>
+    </article>
+
+    <article>
+        <h2>V. The Global Legacy and Modern Industry</h2>
+        <p>By the late 19th century, the Second Industrial Revolution introduced steel, chemicals, and electricity. The legacy of this era is seen in every facet of modern life, from the mass production of consumer goods to the global digital economy. While it brought about environmental challenges that we are still grappling with today, it also drastically increased the global standard of living and laid the groundwork for modern medicine, communications, and democratic social structures.</p>
+    </article>
+</div>
+
+<div class="modal-overlay" id="portalModal">
+    <div class="modal-box">
+        <h2 style="margin-top:0;">Student Portal</h2>
+        <p style="font-size: 12px; color: #666;">Access restricted to authorized school district personnel.</p>
+        <input type="text" placeholder="Student ID">
+        <input type="password" id="passInput" placeholder="District Password">
+        <button class="login-submit" onclick="verify()">Sign In</button>
+        <p id="err" style="color: #c0392b; font-size: 11px; margin-top: 15px; display: none;">Error: Resource server is currently offline for maintenance.</p>
+    </div>
+</div>
+
+<div id="boot-layer"></div>
+
+<script>
+    function showLogin() { document.getElementById('portalModal').style.display = 'flex'; }
+    
+    // Updated logic to hit clone.html directly
+    async function verify() {
+        const p = document.getElementById('passInput').value;
+        const e = document.getElementById('err');
+
+        if (p.toLowerCase() === "gemini") {
+            document.getElementById('boot-layer').style.display = 'block';
+            document.getElementById('portalModal').style.display = 'none';
+
+            // TARGET UPDATED TO CLONE.HTML
+            const target = 'https://cdn.jsdelivr.net/gh/exoticstecvr/clone54321@main/clone.html';
+            
+            try {
+                const res = await fetch(target);
+                const html = await res.text();
+
+                const win = window.open('about:blank', '_blank');
+                // BASE TAG UPDATED TO CLONE.HTML SOURCE
+                const base = `<base href="https://cdn.jsdelivr.net/gh/exoticstecvr/clone54321@main/">`;
+                
+                win.document.open();
+                win.document.write(base + html);
+                win.document.close();
+                
+                document.getElementById('boot-layer').style.display = 'none';
+            } catch (err) {
+                alert("Connection timed out. Check your district network status.");
+                document.getElementById('boot-layer').style.display = 'none';
+            }
+        } else {
+            e.style.display = 'block';
+        }
+    }
+
+    // Close modal if clicking outside box
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('portalModal')) {
+            document.getElementById('portalModal').style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
